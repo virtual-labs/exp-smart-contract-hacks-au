@@ -8,4 +8,4 @@ EMPTY
 ### Developers
 | SNo. | Name | Email | Institute | ID |
 | :---: | :---: | :---: | :---: | :---: |
-| 1 | name | email | institute | id |
+|  1   | Arun Prabhu | arunprabhu@am.amrita.edu | Amrita vishwa vidhyapeetham,amritapuri | id  |
