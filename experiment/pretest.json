@@ -2,37 +2,54 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is a smart contract?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "A legal document stored on a blockchain",
+        "b": "A self-executing contract with the terms of the agreement directly written into code",
+        "c": "A contract signed electronically using a smart card",
+        "d": "An agreement between two parties without any written documentation"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. While smart contracts operate on a blockchain, they are not legal documents in themselves.",
+        "b": "Correct. Smart contracts are self-executing contracts with terms written into code.",
+        "c": "Incorrect. Smart contracts involve code execution, not electronic signatures.",
+        "d": "Incorrect. Smart contracts involve written code executed on a blockchain, providing transparency and automation."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which blockchain platform is commonly used for deploying smart contracts?",
+      "answers": {
+        "a": "Ethereum",
+        "b": "Bitcoin",
+        "c": "Ripple",
+        "d": "Litecoin"
+      },
+      "explanations": {
+        "a": "Correct. Ethereum is a popular blockchain platform for deploying smart contracts.",
+        "b": "Incorrect. While Bitcoin is a blockchain platform, it is not primarily designed for smart contract deployment.",
+        "c": "Incorrect. Ripple is a blockchain platform primarily focused on facilitating payments, not smart contracts.",
+        "d": "Incorrect. Litecoin is a cryptocurrency similar to Bitcoin, but it is not commonly used for smart contract deployment."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "What is the main advantage of using smart contracts?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Increased security",
+        "b": "Decreased transparency",
+        "c": "Reduced automation",
+        "d": "Higher transaction costs"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Correct. Smart contracts are designed to enhance security through automation and cryptographic features.",
+        "b": "Incorrect. Smart contracts aim to increase transparency by removing the need for intermediaries.",
+        "c": "Incorrect. Smart contracts are meant to increase automation by executing predefined actions automatically.",
+        "d": "Incorrect. Smart contracts often reduce transaction costs by eliminating intermediaries."
       },
-      "correctAnswer": "c",
+      "correctAnswer": "a",
       "difficulty": "beginner"
     }
   ]

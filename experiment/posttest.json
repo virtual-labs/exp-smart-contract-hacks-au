@@ -2,37 +2,54 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is one of the vulnerabilities associated with smart contracts?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Re-entrance",
+        "b": "Denial of Service",
+        "c": "Cross-Site Scripting",
+        "d": "SQL Injection"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Re-entrance vulnerability allows an attacker to repeatedly enter a function and manipulate the contract's state.",
+        "b": "Denial of Service attacks aim to disrupt the availability of a service or resource, but it's not specific to smart contracts.",
+        "c": "Cross-Site Scripting (XSS) is a vulnerability in web applications, not directly related to smart contracts.",
+        "d": "SQL Injection is a vulnerability in database systems, not relevant to smart contracts."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "What can occur when a smart contract does not properly handle arithmetic operations?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Arithmetic overflow",
+        "b": "Syntax error",
+        "c": "Memory leak",
+        "d": "Infinite loop"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Arithmetic overflow happens when a calculation produces a result greater than the maximum value that can be stored.",
+        "b": "Syntax errors are related to incorrect code structure, not arithmetic operations.",
+        "c": "Memory leaks refer to inefficient memory usage and are not directly related to arithmetic operations.",
+        "d": "Infinite loops occur when a program gets stuck in a repeating sequence of operations, but it's not specifically related to arithmetic."
       },
-      "correctAnswer": "c",
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which vulnerability allows unauthorized access to private data within a smart contract?",
+      "answers": {
+        "a": "Accessing private data",
+        "b": "Buffer overflow",
+        "c": "Command injection",
+        "d": "Remote code execution"
+      },
+      "explanations": {
+        "a": "Accessing private data vulnerability enables attackers to retrieve sensitive information stored within a smart contract.",
+        "b": "Buffer overflow is a memory-related vulnerability, not directly related to accessing private data in smart contracts.",
+        "c": "Command injection is a vulnerability in command-line interfaces or systems, not specific to smart contracts.",
+        "d": "Remote code execution involves running malicious code on a remote system, not directly related to accessing private data in smart contracts."
+      },
+      "correctAnswer": "a",
       "difficulty": "beginner"
     }
   ]
