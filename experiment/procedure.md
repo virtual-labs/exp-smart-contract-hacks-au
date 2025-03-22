@@ -1,4 +1,4 @@
-<u><b>Procedure</b></u>
+### Procedure
 <h5>Overflow & Underflow</h5>
 <p>Choose overflow and underflow from the following options.</p>
 <div><img src="./images/mainpage.png" alt="overflow-underflow"></div>
