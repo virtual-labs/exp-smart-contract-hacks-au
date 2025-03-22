@@ -1,1 +1,1 @@
-<h4>Smart contract hacks (Re-entrance, arithmetic overflow and underflow, accessing private data)</h4>
+<h4>Smart contract hacks (Re-entrance, Arithmetic overflow and underflow, Accessing private data)</h4>
