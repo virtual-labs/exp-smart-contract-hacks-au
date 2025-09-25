@@ -1,1 +1,1 @@
-## Smart contract hacks (Re-entrance, Arithmetic overflow and underflow, Accessing private data)
+## Smart contract vulnerabilities (Re-entrance, Arithmetic overflow and underflow, Accessing private data)
