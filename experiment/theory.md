@@ -5,17 +5,14 @@
 <h4>Re-entrancy</h4>
 <p>The re-entrancy attack is one of the most destructive attacks in Solidity smart contracts. A re-entrancy attack occurs when a function makes an external call to another untrusted contract, and then the untrusted contract makes a recursive call back to the original function in an attempt to drain funds.</p>
 <p>A re-entrancy attack involves two smart contracts: a vulnerable contract and an untrusted attacker’s contract.</p>
+
 <div><img src="./images/reentrance.png" alt="re-entrance"></div>
 
-<h4>Accessing Private Data</h4> <p>In Solidity, marking a variable <code>private</code> prevents direct access from other contracts but does <strong>not</strong> hide the value from the public. Because blockchains are transparent, any data stored on-chain can be read by anyone using blockchain explorer tools or by directly inspecting transaction/storage data.</p> <p><strong>Example:</strong></p> <pre><code>pragma solidity ^0.6.0;
+<h4>Accessing Private Data</h4> <p>In Solidity, declaring a variable <code>private</code> only prevents other contracts from accessing it directly; it does <strong>not</strong> hide the value from the public. Blockchains are transparent — anyone can read contract storage using blockchain explorers or by inspecting on-chain storage.</p> <p><strong>Example:</strong></p> <pre><code>pragma solidity ^0.6.0;
 
 contract PrivateData {
 string private password = "mySecret123"; // still visible on the blockchain
 }
 </code></pre>
 
-<p><strong>Exploit Impact:</strong> If sensitive information—such as passwords, private keys, API tokens, or secret salts—is stored on-chain, attackers can retrieve it directly from the blockchain even when the variable is declared <code>private</code>. This can lead to credential leaks, unauthorized access, and downstream compromises.</p> 
-<div><img src="./images/reentrance.png" alt="re-entrance"></div>
-
-<h4>Accessing Private Data</h4>
-<p>When writing code for a blockchain-based application, you can define a variable as public or private. The purpose of defining a variable as private is to prevent other contracts from modifying it. However, blockchains are designed to be transparent, meaning that regardless of whether a variable is private or public, everyone can read it. Therefore, storing sensitive information like passwords is a very bad idea.</p>
+<p><strong>Exploit Impact:</strong></p> <ul> <li>If sensitive information (passwords, private keys, API tokens, secret salts) is stored on-chain, attackers can retrieve it directly even when declared <code>private</code>.</li> <li>Leaked secrets can lead to credential theft, unauthorized access, token minting, or other downstream compromises.</li> </ul> <p><strong>Best practices:</strong></p> <ul> <li>Never store secrets on-chain. Keep sensitive values off-chain (secure servers, secret managers).</li> <li>If you must reference secret material, store only hashes or use commit–reveal schemes so the secret itself is not publicly exposed.</li> <li>Use secure oracles or middleware to handle confidential data and perform sensitive operations off-chain.</li> </ul>
