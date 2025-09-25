@@ -1,21 +1,30 @@
 ### Procedure
+
 <h5>Overflow & Underflow</h5>
 <p>Choose overflow and underflow from the following options.</p>
-<div><img src="./images/mainpage.png" alt="overflow-underflow"></div>
+<div><img src="./images/image1.png" alt="overflow-underflow"></div>
 
 <p>Enter the value for Uint8.</p>
-<div><img src="./images/value.png" alt="overflow-underflow"></div>
+<div><img src="./images/image2.png" alt="overflow-underflow"></div>
 <p>Enter a value greater than 255.</p>
-<div><img src="./images/overflowed.png" alt="overflow-underflow"></div>
+<div><img src="./images/image3.png" alt="overflow-underflow"></div>
 <p>Click on the help button to see the explanation.</p>
-<div><img src="./images/help.png" alt="overflow-underflow"></div>
+<div><img src="./images/image4.png" alt="overflow-underflow"></div>
 <p>Click on the underflow button.</p>
-<div><img src="./images/underflow.png" alt="overflow-underflow"></div>
+<div><img src="./images/image5.png" alt="overflow-underflow"></div>
 <p>Enter a value for Uint8.</p>
-<div><img src="./images/valueunder.png" alt="overflow-underflow"></div>
+<div><img src="./images/image6.png" alt="overflow-underflow"></div>
 <p>Enter a value less than 0.</p>
-<div><img src="./images/errorunder.png" alt="overflow-underflow"></div>
-<p>Click on the help button to see the explanation.</p>
+<div><img src="./images/image7.png" alt="overflow-underflow"></div>
+<p>Click the Help button to see the explanation.</p>
+<div><img src="./images/image8.png" alt="overflow-underflow"></div>
+<p>Click the Show Example button to view an example of overflow.</p>
+<div><img src="./images/image9.png" alt="overflow-underflow"></div>
+<p>Enter an amount greater than the sender’s balance.</p>
+<div><img src="./images/image10.png" alt="overflow-underflow"></div>
+<p>Click the Transfer button to see an overflow alert message.</p>
+<div><img src="./images/image13.png" alt="overflow-underflow"></div>
+<p>Enter a negative amount and click the Transfer button.</p>
 
 <h5>Re-entrancy</h5>
 <p>Click on the attack button and observe the changes happening carefully.</p>
