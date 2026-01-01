@@ -1,0 +1,107 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "What is a smart contract?",
+      "answers": {
+        "a": "A legal document stored on a blockchain",
+        "b": "A self-executing contract with the terms of the agreement directly written into code",
+        "c": "A contract signed electronically using a smart card",
+        "d": "An agreement between two parties without any written documentation"
+      },
+      "explanations": {
+        "a": "Incorrect. While smart contracts operate on a blockchain, they are not legal documents in themselves.",
+        "b": "Correct. Smart contracts are self-executing contracts with terms written into code.",
+        "c": "Incorrect. Smart contracts involve code execution, not electronic signatures.",
+        "d": "Incorrect. Smart contracts involve written code executed on a blockchain, providing transparency and automation."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which blockchain platform is commonly used for deploying smart contracts?",
+      "answers": {
+        "a": "Ethereum",
+        "b": "Bitcoin",
+        "c": "Ripple",
+        "d": "Litecoin"
+      },
+      "explanations": {
+        "a": "Correct. Ethereum is a popular blockchain platform for deploying smart contracts.",
+        "b": "Incorrect. While Bitcoin is a blockchain platform, it is not primarily designed for smart contract deployment.",
+        "c": "Incorrect. Ripple is a blockchain platform primarily focused on facilitating payments, not smart contracts.",
+        "d": "Incorrect. Litecoin is a cryptocurrency similar to Bitcoin, but it is not commonly used for smart contract deployment."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the main advantage of using smart contracts?",
+      "answers": {
+        "a": "Increased security",
+        "b": "Decreased transparency",
+        "c": "Reduced automation",
+        "d": "Higher transaction costs"
+      },
+      "explanations": {
+        "a": "Correct. Smart contracts are designed to enhance security through automation and cryptographic features.",
+        "b": "Incorrect. Smart contracts aim to increase transparency by removing the need for intermediaries.",
+        "c": "Incorrect. Smart contracts are meant to increase automation by executing predefined actions automatically.",
+        "d": "Incorrect. Smart contracts often reduce transaction costs by eliminating intermediaries."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What happens during an overflow attack on a smart contract?",
+      "answers": {
+        "a": "A value drops below the minimum representable limit",
+        "b": "A function calls an untrusted contract recursively",
+        "c": "A value exceeds the maximum representable limit and wraps around",
+        "d": "Private data is accessed by external users"
+      },
+      "explanations": {
+        "a": "Incorrect. This describes an underflow, not an overflow.",
+        "b": "Incorrect. This refers to a re-entrancy attack, not an overflow.",
+        "c": "Correct. An overflow occurs when a value exceeds the maximum limit (e.g., 255 for Uint8) and wraps around due to the finite range of the data type.",
+        "d": "Incorrect. This relates to accessing private data, not an overflow."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is a re-entrancy attack in the context of smart contracts?",
+      "answers": {
+        "a": "An attack where private variables are read by external users",
+        "b": "An attack where a function recursively calls an untrusted contract to drain funds",
+        "c": "An attack where integer values exceed their maximum limit",
+        "d": "An attack where a contract fails due to insufficient gas"
+      },
+      "explanations": {
+        "a": "Incorrect. This relates to accessing private data, not re-entrancy.",
+        "b": "Correct. A re-entrancy attack occurs when a function makes an external call to an untrusted contract, which then recursively calls back to drain funds.",
+        "c": "Incorrect. This describes an overflow attack, not re-entrancy.",
+        "d": "Incorrect. Gas issues are unrelated to re-entrancy attacks."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Why is storing sensitive information like passwords in a smart contract a bad idea?",
+      "answers": {
+        "a": "Because smart contracts are slow to process sensitive data",
+        "b": "Because blockchains are transparent, allowing anyone to read private variables",
+        "c": "Because smart contracts cannot store data securely",
+        "d": "Because passwords increase the gas cost of transactions"
+      },
+      "explanations": {
+        "a": "Incorrect. Processing speed is not the primary issue here.",
+        "b": "Correct. Blockchains are transparent, so even private variables can be read by anyone, making it insecure for sensitive data like passwords.",
+        "c": "Incorrect. Smart contracts can store data securely, but transparency undermines privacy.",
+        "d": "Incorrect. Gas costs are unrelated to the security of storing passwords."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
+  ]
+}
