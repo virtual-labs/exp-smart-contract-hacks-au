@@ -39,18 +39,84 @@
 
 <div><img src="./images/underflow3.png" alt="overflow-underflow"></div>
 <br>
-<h5>Re-entrancy</h5>
-<p>Click on the attack button and observe the changes happening carefully.</p>
-<div><img src="./images/reentry.png" alt="re-entrancy"></div>
-<p>Step 1: The attack() function deposits 1 ETH into the Bank contract.</p>
-<div><img src="./images/step1.png" alt="re-entrancy"></div>
-<p>Step 2: The attack() function deposits 1 ETH into the Bank contract.</p>
-<div><img src="./images/step2.png" alt="re-entrancy"></div>
-<p>Step 3: Since the balance of msg.sender (the Attack contract's address) is greater than 0, an external contract is called to send the value.</p>
-<div><img src="./images/step3.png" alt="re-entrancy"></div>
-<p>Step 4: When the Attack contract receives ETH from the Bank contract, the fallback() function is called. First, it checks the balance in the Bank contract, then it calls the withdraw() function in the Bank contract again.</p>
-<div><img src="./images/step4.png" alt="re-entrancy"></div>
-<p>Step 5: The line balances[msg.sender] = 0 is not reached because msg.sender.call has not finished yet. This continues until all the funds in the Bank contract are drained.</p>
-<div><img src="./images/step5.png" alt="re-entrancy"></div>
-<!-- <p>Step 6</p>
-<div><img src="./images/step6.png" alt="re-entrancy"></div> -->
+
+#### Re-entrancy
+
+Click the **Attack** button to initiate the re-entrancy attack and observe the contract behavior step by step.
+
+![Re-entrancy Overview](./images/reentry1.png)
+
+#### Step 1: Deposit Ether
+
+The `attack()` function is executed, which deposits **1 ETH** into the vulnerable Bank contract.
+
+![Re-entrancy Step 1](./images/reentry2.png)
+
+#### Step 2: Initiate Withdrawal
+
+After the deposit, the `attack()` function invokes the `withdraw()` function of the Bank contract.
+
+![Re-entrancy Step 2](./images/reentry3.png)
+
+#### Step 3: External Call Execution
+
+Since the balance of `msg.sender` (the Attack contract address) is greater than zero, the Bank contract performs an **external call** to transfer ETH.
+
+![Re-entrancy Step 3](./images/reentry4.png)
+
+#### Step 4: Re-entrant Callback
+
+When ETH is received, the Attack contract’s `fallback()` function is triggered.  
+Before the Bank contract updates the sender’s balance, the fallback function calls `withdraw()` again.
+
+![Re-entrancy Step 4](./images/reentry5.png)
+
+#### Step 5: Drain Contract Balance
+
+Because `balances[msg.sender] = 0` is executed only after the external call completes, the withdrawal process is re-entered repeatedly.  
+This continues until the Bank contract’s balance is fully drained.
+
+![Re-entrancy Step 5](./images/reentry6.png)
+
+#### Accessing Private Data
+
+#### Step 1: Select the Vulnerability
+
+From the **Smart Contract Vulnerabilities** panel on the right side, select **Accessing private data**.  
+This opens the simulation explaining how Solidity stores state variables using storage slots.
+
+![Access Private Data – Selection](./images/Access1.png)
+
+#### Step 2: Select Data Types
+
+- Select the required **data type(s)** from the **Select DataType** section.
+- Click **Go to Simulation** to proceed.
+
+![Select Data Types](./images/Access2.png)
+
+#### Step 3: Declare a State Variable
+
+- Select the **Access Specifier** (e.g., `public` or `private`).
+- Enter the **Variable Name**.
+- Enter the **Initial Value**.
+- Click **Declare** to add the variable to the contract.
+
+![Declare Variable](./images/Access3.png)
+
+#### Step 4: Deploy the Contract
+
+- Click **Deploy** to deploy the smart contract.
+- After successful deployment, the **Contract Address** is displayed.
+
+![Contract Deployment](./images/Access4.png)
+
+#### Step 5: Access the Private Data
+
+- Copy the **Contract Address**.
+- Paste it into the **Contract address** field under _Access private data_.
+- Enter the corresponding **Storage Slot Number**.
+- Click **Access private Data**.
+
+![Access Private Data](./images/Access5.png)
+
+The value stored in the specified storage slot is displayed, even if the variable is declared as `private`.
