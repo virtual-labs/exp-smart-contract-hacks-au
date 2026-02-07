@@ -1,42 +1,44 @@
 <!-- ### Procedure -->
 
 <h5>Overflow & Underflow</h5>
+<br>
+<p>
+  1. Open the Smart Contract Vulnerabilities page and choose either <b>Overflow</b> or <b>Underflow</b> from the right-side control panel by clicking on <b>Overflow &amp; Underflow</b>.
+</p>
 
-<p>1. Choose <b>Overflow</b> or <b>Underflow</b> from the given options.</p>
-<div><img src="./images/image1.png" alt="overflow-underflow"></div>
+<div>
+  <img src="./images/main.png" alt="overflow-underflow">
+</div>
+<br>
+<p>
+  2. Under <b>Select Vulnerability Type</b>, click <b>Overflow</b> and observe the initial balances where <b>Alice (Sender)</b> has 10 tokens and <b>Bob (Recipient)</b> has 255 tokens (maximum value of uint8).
+</p>
+<div><img src="./images/overflow1.png" alt="overflow-underflow"></div>
+<br>
+<p>
+  3. In the <b>Tokens to Send</b> input field, enter <b>1</b>, click on <b>“Alice Sends Tokens to Bob”</b>, observe a popup showing <b>“Vulnerability Detected – Integer Overflow”</b>, and note that the calculation <b>(255 + 1 = 0)</b> causes Bob’s balance to wrap from <b>255 to 0 tokens</b>, which is confirmed in the <b>Transaction History</b> where the overflow vulnerability is highlighted.
+</p>
 
-<p>2. Select the data type as <b>uint8</b>.</p>
-<div><img src="./images/image2.png" alt="overflow-underflow"></div>
+<div><img src="./images/overflow2.png" alt="overflow-underflow"></div>
+<br>
+<p>
+  4. From the right-side control panel under <b>Overflow &amp; Underflow</b>, click <b>Underflow</b> and observe that <b>Eve</b> has an initial balance of <b>0 tokens</b>.
+</p>
 
-<p>3. Enter a value greater than 255.</p>
-<div><img src="./images/image3.png" alt="overflow-underflow"></div>
+<div><img src="./images/underflow1.png" alt="overflow-underflow"></div>
 
-<p>4. Click the <b>Help</b> button to see the explanation.</p>
-<div><img src="./images/image4.png" alt="overflow-underflow"></div>
+<p>
+ 5. In the <b>Tokens to Withdraw</b> input field, enter <b>1</b> and click on <b>“Eve Withdraws Tokens”</b>.
+</p>
 
-<p>5. Click the <b>Underflow</b> button and select a data type.</p>
-<div><img src="./images/image5.png" alt="overflow-underflow"></div>
+<div><img src="./images/underflow2.png" alt="overflow-underflow"></div>
+<br>
+<p>
+  6. Observe a popup displaying <b>“Vulnerability Detected – Integer Underflow”</b>, where the calculation <b>(0 − 1 = 255)</b> causes Eve’s balance to wrap from <b>0 to 255 tokens</b>, which is confirmed in the <b>Transaction History</b> indicating the underflow vulnerability.
+</p>
 
-<p>6. Enter a value less than 0.</p>
-<div><img src="./images/image6.png" alt="overflow-underflow"></div>
-
-<p>7. Click the <b>Help</b> button to see the explanation.</p>
-<div><img src="./images/image7.png" alt="overflow-underflow"></div>
-
-<p>8. Click the <b>Show Example</b> button to view an example of overflow.</p>
-<div><img src="./images/image8.png" alt="overflow-underflow"></div>
-
-<p>9. Enter an amount greater than the sender’s balance.</p>
-<div><img src="./images/image9.png" alt="overflow-underflow"></div>
-
-<p>10. Click the <b>Transfer</b> button to see an overflow alert message.</p>
-<div><img src="./images/image10.png" alt="overflow-underflow"></div>
-
-<p>11. Enter a negative amount.</p>
-<div><img src="./images/image13.png" alt="overflow-underflow"></div>
-
-<p>12. Click the <b>Transfer</b> button.</p>
-
+<div><img src="./images/underflow3.png" alt="overflow-underflow"></div>
+<br>
 <h5>Re-entrancy</h5>
 <p>Click on the attack button and observe the changes happening carefully.</p>
 <div><img src="./images/reentry.png" alt="re-entrancy"></div>
