@@ -1,54 +1,122 @@
 <!-- ### Procedure -->
 
 <h5>Overflow & Underflow</h5>
+<br>
+<p>
+  1. Open the Smart Contract Vulnerabilities page and choose either <b>Overflow</b> or <b>Underflow</b> from the right-side control panel by clicking on <b>Overflow &amp; Underflow</b>.
+</p>
 
-<p>1. Choose <b>Overflow</b> or <b>Underflow</b> from the given options.</p>
-<div><img src="./images/image1.png" alt="overflow-underflow"></div>
+<div>
+  <img src="./images/main.png" alt="overflow-underflow">
+</div>
+<br>
+<p>
+  2. Under <b>Select Vulnerability Type</b>, click <b>Overflow</b> and observe the initial balances where <b>Alice (Sender)</b> has 10 tokens and <b>Bob (Recipient)</b> has 255 tokens (maximum value of uint8).
+</p>
+<div><img src="./images/overflow1.png" alt="overflow-underflow"></div>
+<br>
+<p>
+  3. In the <b>Tokens to Send</b> input field, enter <b>1</b>, click on <b>“Alice Sends Tokens to Bob”</b>, observe a popup showing <b>“Vulnerability Detected – Integer Overflow”</b>, and note that the calculation <b>(255 + 1 = 0)</b> causes Bob’s balance to wrap from <b>255 to 0 tokens</b>, which is confirmed in the <b>Transaction History</b> where the overflow vulnerability is highlighted.
+</p>
 
-<p>2. Select the data type as <b>uint8</b>.</p>
-<div><img src="./images/image2.png" alt="overflow-underflow"></div>
+<div><img src="./images/overflow2.png" alt="overflow-underflow"></div>
+<br>
+<p>
+  4. From the right-side control panel under <b>Overflow &amp; Underflow</b>, click <b>Underflow</b> and observe that <b>Eve</b> has an initial balance of <b>0 tokens</b>.
+</p>
 
-<p>3. Enter a value greater than 255.</p>
-<div><img src="./images/image3.png" alt="overflow-underflow"></div>
+<div><img src="./images/underflow1.png" alt="overflow-underflow"></div>
 
-<p>4. Click the <b>Help</b> button to see the explanation.</p>
-<div><img src="./images/image4.png" alt="overflow-underflow"></div>
+<p>
+ 5. In the <b>Tokens to Withdraw</b> input field, enter <b>1</b> and click on <b>“Eve Withdraws Tokens”</b>.
+</p>
 
-<p>5. Click the <b>Underflow</b> button and select a data type.</p>
-<div><img src="./images/image5.png" alt="overflow-underflow"></div>
+<div><img src="./images/underflow2.png" alt="overflow-underflow"></div>
+<br>
+<p>
+  6. Observe a popup displaying <b>“Vulnerability Detected – Integer Underflow”</b>, where the calculation <b>(0 − 1 = 255)</b> causes Eve’s balance to wrap from <b>0 to 255 tokens</b>, which is confirmed in the <b>Transaction History</b> indicating the underflow vulnerability.
+</p>
 
-<p>6. Enter a value less than 0.</p>
-<div><img src="./images/image6.png" alt="overflow-underflow"></div>
+<div><img src="./images/underflow3.png" alt="overflow-underflow"></div>
+<br>
 
-<p>7. Click the <b>Help</b> button to see the explanation.</p>
-<div><img src="./images/image7.png" alt="overflow-underflow"></div>
+#### Re-entrancy
 
-<p>8. Click the <b>Show Example</b> button to view an example of overflow.</p>
-<div><img src="./images/image8.png" alt="overflow-underflow"></div>
+Click the **Attack** button to initiate the re-entrancy attack and observe the contract behavior step by step.
 
-<p>9. Enter an amount greater than the sender’s balance.</p>
-<div><img src="./images/image9.png" alt="overflow-underflow"></div>
+![Re-entrancy Overview](./images/reentry1.png)
 
-<p>10. Click the <b>Transfer</b> button to see an overflow alert message.</p>
-<div><img src="./images/image10.png" alt="overflow-underflow"></div>
+#### Step 1: Deposit Ether
 
-<p>11. Enter a negative amount.</p>
-<div><img src="./images/image13.png" alt="overflow-underflow"></div>
+The `attack()` function is executed, which deposits **1 ETH** into the vulnerable Bank contract.
 
-<p>12. Click the <b>Transfer</b> button.</p>
+![Re-entrancy Step 1](./images/reentry2.png)
 
-<h5>Re-entrancy</h5>
-<p>Click on the attack button and observe the changes happening carefully.</p>
-<div><img src="./images/reentry.png" alt="re-entrancy"></div>
-<p>Step 1: The attack() function deposits 1 ETH into the Bank contract.</p>
-<div><img src="./images/step1.png" alt="re-entrancy"></div>
-<p>Step 2: The attack() function deposits 1 ETH into the Bank contract.</p>
-<div><img src="./images/step2.png" alt="re-entrancy"></div>
-<p>Step 3: Since the balance of msg.sender (the Attack contract's address) is greater than 0, an external contract is called to send the value.</p>
-<div><img src="./images/step3.png" alt="re-entrancy"></div>
-<p>Step 4: When the Attack contract receives ETH from the Bank contract, the fallback() function is called. First, it checks the balance in the Bank contract, then it calls the withdraw() function in the Bank contract again.</p>
-<div><img src="./images/step4.png" alt="re-entrancy"></div>
-<p>Step 5: The line balances[msg.sender] = 0 is not reached because msg.sender.call has not finished yet. This continues until all the funds in the Bank contract are drained.</p>
-<div><img src="./images/step5.png" alt="re-entrancy"></div>
-<!-- <p>Step 6</p>
-<div><img src="./images/step6.png" alt="re-entrancy"></div> -->
+#### Step 2: Initiate Withdrawal
+
+After the deposit, the `attack()` function invokes the `withdraw()` function of the Bank contract.
+
+![Re-entrancy Step 2](./images/reentry3.png)
+
+#### Step 3: External Call Execution
+
+Since the balance of `msg.sender` (the Attack contract address) is greater than zero, the Bank contract performs an **external call** to transfer ETH.
+
+![Re-entrancy Step 3](./images/reentry4.png)
+
+#### Step 4: Re-entrant Callback
+
+When ETH is received, the Attack contract’s `fallback()` function is triggered.  
+Before the Bank contract updates the sender’s balance, the fallback function calls `withdraw()` again.
+
+![Re-entrancy Step 4](./images/reentry5.png)
+
+#### Step 5: Drain Contract Balance
+
+Because `balances[msg.sender] = 0` is executed only after the external call completes, the withdrawal process is re-entered repeatedly.  
+This continues until the Bank contract’s balance is fully drained.
+
+![Re-entrancy Step 5](./images/reentry6.png)
+
+#### Accessing Private Data
+
+#### Step 1: Select the Vulnerability
+
+From the **Smart Contract Vulnerabilities** panel on the right side, select **Accessing private data**.  
+This opens the simulation explaining how Solidity stores state variables using storage slots.
+
+![Access Private Data – Selection](./images/Access1.png)
+
+#### Step 2: Select Data Types
+
+- Select the required **data type(s)** from the **Select DataType** section.
+- Click **Go to Simulation** to proceed.
+
+![Select Data Types](./images/Access2.png)
+
+#### Step 3: Declare a State Variable
+
+- Select the **Access Specifier** (e.g., `public` or `private`).
+- Enter the **Variable Name**.
+- Enter the **Initial Value**.
+- Click **Declare** to add the variable to the contract.
+
+![Declare Variable](./images/Access3.png)
+
+#### Step 4: Deploy the Contract
+
+- Click **Deploy** to deploy the smart contract.
+- After successful deployment, the **Contract Address** is displayed.
+
+![Contract Deployment](./images/Access4.png)
+
+#### Step 5: Access the Private Data
+
+- Copy the **Contract Address**.
+- Paste it into the **Contract address** field under _Access private data_.
+- Enter the corresponding **Storage Slot Number**.
+- Click **Access private Data**.
+
+![Access Private Data](./images/Access5.png)
+
+The value stored in the specified storage slot is displayed, even if the variable is declared as `private`.
