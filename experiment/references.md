@@ -1,4 +1,4 @@
-## References
+
 
 - Atzei, N., Bartoletti, M., & Cimoli, T. (2017). *A Survey of Attacks on Ethereum Smart Contracts (SoK)*.  
   https://link.springer.com/chapter/10.1007/978-3-662-54455-6_8
